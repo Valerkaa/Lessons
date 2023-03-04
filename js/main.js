@@ -1,9 +1,9 @@
 // Lesson 2
 
 
-let question = prompt('Хочешь учить JS?', "OFC");
+let question = prompt('What\'s your name?', "Name");
 
-alert(`Ура! Ты ответил : ${question} !`);
+alert(`Hello, ${question} How are you? `);
 
 
 // Lesson 2 End
