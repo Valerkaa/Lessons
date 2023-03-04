@@ -20,7 +20,19 @@
 <body>
 
   <p>Таки дела) Тут был Хеллоу Ворлд </p>
-  <script src="js/main.js"></script>
+  <form id="myForm">
+    <label for="name">Name:</label>
+    <input id="name" placeholder="Peter" required name="name">
+
+    <label for="lastName">Last name:</label>
+    <input id="lastName"  placeholder="Parker" required name="lastName">
+
+    <label for="email">Email:</label>
+    <input id="email" type="email" placeholder="example@email.com" name="email" required>
+
+    <input type="submit" value="Send Me!">
+  </form>
+  <script  src="js/main.js"></script>
 
 
 </body>
