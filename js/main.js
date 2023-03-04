@@ -20,6 +20,6 @@ form.addEventListener( "submit", function ( event ) {
   let name = document.getElementById("name").value
   let lastName = document.getElementById("lastName").value
   let email = document.getElementById("email").value
-  alert(name +" " + lastName + " " + email)
+  alert(`Имя:${name} Фамилия:${lastName} Почта:${email}`)
 } );
 // Lesson 3 End
