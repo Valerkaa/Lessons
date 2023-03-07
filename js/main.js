@@ -55,8 +55,8 @@
 // Lesson 4
 
 
-  let firstNumber = prompt("Введите первое число",0);
-  let secondNumber = prompt("Введите второе число",22);
+  let firstNumber = prompt("Введите первое число",0) || 0;
+  let secondNumber = prompt("Введите второе число",22) || 22;
   let bothTrue;
   firstNumber && secondNumber ? bothTrue = 80 : bothTrue = 40;
 
