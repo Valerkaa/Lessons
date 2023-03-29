@@ -354,47 +354,90 @@
 
 
 
-
-
-let currElem = 0;
-const arr = [1, 2, 3, 4, 5, 6, 7];
-function deleteElem(arr,elem){
-  currElem = arr.indexOf(elem)
-  arr.splice(currElem, 1);
-  return arr
-}
-const chars =
-  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
- function generateCustomPassword(passwordLength,chars){
-  let password = "";
-  for (let i = 0; i <= passwordLength; i++) {
-    const randomNumber = Math.floor(Math.random() * chars.length);
-    password += chars.substring(randomNumber, randomNumber + 1);
-  }
-
-  return password;
-};
-
-
-
-function deleteSymbols(str, symbols) {
-  let arr = str.toLowerCase().split("").filter((item) => !symbols.includes(item)).join("");
-  return arr;
-}
-
-
-function sumOf (){
-   let ourSum = 0;
-   return function (x){
-     ourSum += x
-     return ourSum
-   }
- }
- let sum = sumOf();
-
+//
+//
+// let currElem = 0;
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// function deleteElem(arr,elem){
+//   currElem = arr.indexOf(elem)
+//   arr.splice(currElem, 1);
+//   return arr
+// }
+// const chars =
+//   "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//
+//  function generateCustomPassword(passwordLength,chars){
+//   let password = "";
+//   for (let i = 0; i <= passwordLength; i++) {
+//     const randomNumber = Math.floor(Math.random() * chars.length);
+//     password += chars.substring(randomNumber, randomNumber + 1);
+//   }
+//
+//   return password;
+// };
+//
+//
+//
+// function deleteSymbols(str, symbols) {
+//   let arr = str.toLowerCase().split("").filter((item) => !symbols.includes(item)).join("");
+//   return arr;
+// }
+//
+//
+// function sumOf (){
+//    let ourSum = 0;
+//    return function (x){
+//      ourSum += x
+//      return ourSum
+//    }
+//  }
+//  let sum = sumOf();
+//
 
 
 
 
 //lesson 8 end
+
+
+//lesson 9
+
+
+const arr = [1,[3, [0, [8]]]];
+function factorialOfNumber(num) {
+  return num !== 1 && num !== 0 ? num * factorialOfNumber(num - 1) : 1;
+}
+function factorialNumber(el) {
+  let array = el.flat(Infinity);
+  array.forEach((el) => {
+    arr.push(factorialOfNumber(el));
+  });
+  return arr.join();
+}
+
+
+let calculator = {
+  read(){
+    this.firstNum = +prompt("First Number");
+    this.secondNum = +prompt("Second Number");
+  },
+  sum(){
+    return this.firstNum + this.secondNum
+  },
+  mul(){
+    return this.firstNum * this.secondNum
+  }
+};
+
+calculator.read()
+alert( calculator.sum() );
+alert( calculator.mul() );
+
+
+
+
+
+
+
+
+//lesson 9 end
