@@ -1,48 +1,50 @@
-function findNumber(item) {
-  let count = {};
-  let array = [];
-  item.filter((elements) => {
-    if (count[elements] === undefined) {
-      count[elements] = 1;
+
+function solution(str) {
+  let string = "abcdefghijklmnopqrstuvwxyz";
+  let resalt;
+  string.split("").forEach((item) => {
+    if (string.split("").includes(item) !== str.split("").includes(item)) {
+      resalt = false;
     } else {
-      count[elements]++;
+      resalt = true;
     }
   });
-  for (let key in count) if (count[key] % 2 !== 0) array.push(+key);
+  return resalt;
+}
+console.log(solution("0123456789abcdefghijklmnop"));
+console.log(solution("qwertyuioplkjhgfdsazxcvbnm"));
+console.log(solution("wyyga"));
+console.log(solution("WqqqqqqqpwoeirutyalskdjfhgmznxbCV"));
+function solutionNew(item) {
+  let arr = item[0].split(/[\W]/).filter(Boolean);
+  let a = arr.length;
+  let b = arr.join("").length;
+  let array = [];
+  arr.forEach((element) => {
+    if (b / a < element.length) array.push(element);
+  });
   return array;
 }
+console.log(solutionNew(["This is a sample string"]));
+console.log(solutionNew(["Some another sample"]));
+console.log(solutionNew("Do, do, do, do... do it!"));
 
-const arr = [4, 8, 15, 16, 23, 42, 4, 15, 42, 42];
+const database = {
+  nameUser: " name",
+  passwordDatabase: "password",
+  registrationNewUser: "newName",
+};
+const user = {
+};
+const admin = {
+  email: "email",
+};
+const guest = {
+};
 
-console.log(findNumber(arr));
-function AddHtml(name) {
-  if (name === undefined) {
-    this.z = "";
-    this.x = "";
-
-  } else {
-    this.z = `<${name}>`;
-    this.x = `</${name}>`;
-  }
-  this.html = this.z + this.x;
-
-  this.add = function (tag, str = "") {
-    this.z = this.z + `<${tag}>`;
-    this.x = `</${tag}>` + this.x;
-    this.c = str;
-    this.html = this.z + this.c + this.x;
-    return this;
-  };
-  this.render = function () {
-    let newHtml = this.html
-    this.z = `<${name}>`;
-    this.x = `</${name}>`;
-    return newHtml;
-  };
-
-}
-let obj = new AddHtml("body")
-  .add("div")
-  .add("div", "Priv")
-  .render()
-document.write(obj)
+user.__proto__ = admin;
+admin.__proto__ = database;
+guest.__proto__=database
+console.log(admin.passwordDatabase); //password
+console.log(user.email); //email
+console.log(guest.email); // undefined
