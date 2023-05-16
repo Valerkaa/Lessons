@@ -1,42 +1,48 @@
-const array =[1,1,1,2,2,2,2,3,3,3,3,3,4,5,5]
-const arrFunc =(arr)=>{
-  const newArr=[];
-  arr.forEach(element => {
-    newArr[element] = newArr[element]?newArr[element]+1 : 1;
+function findNumber(item) {
+  let count = {};
+  let array = [];
+  item.filter((elements) => {
+    if (count[elements] === undefined) {
+      count[elements] = 1;
+    } else {
+      count[elements]++;
+    }
   });
-  const filter = arr.filter(item=>newArr[item]%2!==0)
-
-  return [...new Set(filter)]
+  for (let key in count) if (count[key] % 2 !== 0) array.push(+key);
+  return array;
 }
-console.log(arrFunc(array))
 
-function ezjQuery(selector) {
-  if (!(this instanceof ezjQuery)) {
-    return new ezjQuery(selector);
+const arr = [4, 8, 15, 16, 23, 42, 4, 15, 42, 42];
+
+console.log(findNumber(arr));
+function AddHtml(name) {
+  if (name === undefined) {
+    this.z = "";
+    this.x = "";
+
+  } else {
+    this.z = `<${name}>`;
+    this.x = `</${name}>`;
   }
-  this.selector = selector;
-  this.htmlString = `<${selector}></${selector}>`;
-  this.add = function(tag, text) {
-    const newHtmlString = text
-      ? `<${tag}>${text}</${tag}>`
-      : `<${tag}></${tag}>`;
-    this.htmlString = this.htmlString.replace(`</${this.selector}>`, `${newHtmlString}</${this.selector}>`);
+  this.html = this.z + this.x;
+
+  this.add = function (tag, str = "") {
+    this.z = this.z + `<${tag}>`;
+    this.x = `</${tag}>` + this.x;
+    this.c = str;
+    this.html = this.z + this.c + this.x;
     return this;
-  }
-  this.render = function() {
-    return this.htmlString;
-  }
+  };
+  this.render = function () {
+    let newHtml = this.html
+    this.z = `<${name}>`;
+    this.x = `</${name}>`;
+    return newHtml;
+  };
+
 }
-let helloList = ezjQuery('body')
-  .add('div')
-  .add('ul')
-  .add('li', 'Hello')
-  .render();
-
-console.log(helloList);// "<body><div><ul><li>Hello</li></ul></div></body>"
-
-let bodyDiv = ezjQuery('body')
-  .add('div')
-  .render();
-console.log(bodyDiv);// "<body><div></div></body>"
-document.write(helloList)
+let obj = new AddHtml("body")
+  .add("div")
+  .add("div", "Priv")
+  .render()
+document.write(obj)
