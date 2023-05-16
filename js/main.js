@@ -1,42 +1,27 @@
-const array =[1,1,1,2,2,2,2,3,3,3,3,3,4,5,5]
-const arrFunc =(arr)=>{
-  const newArr=[];
-  arr.forEach(element => {
-    newArr[element] = newArr[element]?newArr[element]+1 : 1;
+const yourFunc = (arr) => {
+  let array = [arr[0]];
+  arr.forEach((element) => {
+    if (arr.includes(element) !== array.includes(element)) array.push(element);
   });
-  const filter = arr.filter(item=>newArr[item]%2!==0)
+  return array;
+};
+const arr1 = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
+console.log(yourFunc(arr1));
+const arr2 = [1, 2, 3, 3, 3, 4, 3, 4, 4, 4, 4, 4, 3, 3];
+function findNumber(arr) {
+  let count = {};
+  let maxNum = 0;
+  let resalt = [];
+  arr.forEach((item) => {
+    if (count[item] === undefined) {
+      count[item] = 1;
+    } else {
+      count[item]++;
+    }
+    if (count[item] > maxNum) maxNum = count[item];
+  });
+  console.log(count);
+  for (let key in count) if (count[key] === maxNum) resalt.push(key);
+  return resalt.shift();}
 
-  return [...new Set(filter)]
-}
-console.log(arrFunc(array))
-
-function ezjQuery(selector) {
-  if (!(this instanceof ezjQuery)) {
-    return new ezjQuery(selector);
-  }
-  this.selector = selector;
-  this.htmlString = `<${selector}></${selector}>`;
-  this.add = function(tag, text) {
-    const newHtmlString = text
-      ? `<${tag}>${text}</${tag}>`
-      : `<${tag}></${tag}>`;
-    this.htmlString = this.htmlString.replace(`</${this.selector}>`, `${newHtmlString}</${this.selector}>`);
-    return this;
-  }
-  this.render = function() {
-    return this.htmlString;
-  }
-}
-let helloList = ezjQuery('body')
-  .add('div')
-  .add('ul')
-  .add('li', 'Hello')
-  .render();
-
-console.log(helloList);// "<body><div><ul><li>Hello</li></ul></div></body>"
-
-let bodyDiv = ezjQuery('body')
-  .add('div')
-  .render();
-console.log(bodyDiv);// "<body><div></div></body>"
-document.write(helloList)
+// вернет 5
